@@ -8,11 +8,14 @@ interface InputFormProps {
 
     const [numsList, setNumsList] = useState<string>("");
     const [targetNum, setTargetNum] = useState<string>("");
+    const [displayedNums, setDisplayedNums] = useState<string>();
 
     const handleSubmit = (e: React.FormEvent) =>{
       e.preventDefault();
       console.log("List of Numbers:", numsList);
       console.log("target Number" , targetNum);
+      
+      setDisplayedNums(numsList);
 
     };
 
@@ -44,11 +47,21 @@ interface InputFormProps {
           </div>
           <button 
           type="submit" 
-          className="btn w-full"
+          className=" btn btn-wide btn-outline btn-info"
           >
             Start Search
           </button>
         </form>
+        {displayedNums ? (
+        <div className="card bg-base-100 shadow-md mt-4">
+          <h3 className="card-title text-sm">Entered Values</h3>
+            <div className="card-body">
+   
+              <p>{numsList}</p>
+   
+            </div>
+        </div>
+        ) : null}
       </aside>
     );
   };
