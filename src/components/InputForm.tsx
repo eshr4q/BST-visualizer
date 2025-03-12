@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sortNumberList } from "../utils/numberUtils";
 
 interface InputFormProps {
     onSubmit: (array: number[], target: number) => void;
@@ -6,16 +7,26 @@ interface InputFormProps {
   
   const InputForm: React.FC<InputFormProps> = ({}) => {
 
+    
+
     const [numsList, setNumsList] = useState<string>("");
     const [targetNum, setTargetNum] = useState<string>("");
     const [displayedNums, setDisplayedNums] = useState<string>();
+
+    
 
     const handleSubmit = (e: React.FormEvent) =>{
       e.preventDefault();
       console.log("List of Numbers:", numsList);
       console.log("target Number" , targetNum);
       
-      setDisplayedNums(numsList);
+      if (numsList) {
+      const sortedArray = sortNumberList(numsList).join(", ");
+      console.log("sortedList", sortedArray);
+      setDisplayedNums(sortedArray);
+    }
+
+     
 
     };
 
@@ -57,7 +68,7 @@ interface InputFormProps {
           <h3 className="card-title text-sm">Entered Values</h3>
             <div className="card-body">
    
-              <p>{numsList}</p>
+              <p>{displayedNums}</p>
    
             </div>
         </div>
