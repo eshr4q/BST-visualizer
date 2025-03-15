@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { sortNumberList } from "../utils/numberUtils";
+import { sortNumberList } from "../utils/sortNumbers";
 
 interface InputFormProps {
     onSubmit: (array: number[], target: number) => void;
   }
   
-  const InputForm: React.FC<InputFormProps> = ({}) => {
+  const InputForm: React.FC<InputFormProps> = ({onSubmit}) => {
 
     
 
@@ -21,9 +21,10 @@ interface InputFormProps {
       console.log("target Number" , targetNum);
       
       if (numsList) {
-      const sortedArray = sortNumberList(numsList).join(", ");
+      const sortedArray = sortNumberList(numsList);
       console.log("sortedList", sortedArray);
-      setDisplayedNums(sortedArray);
+      setDisplayedNums(sortedArray.join(", "));
+      onSubmit(sortedArray, Number(targetNum) || 0);
     }
 
      
