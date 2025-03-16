@@ -32,7 +32,7 @@ interface InputFormProps {
     };
 
     return (
-      <aside className="w-full md:w-72 p-4 pt-16 bg-base-300 hidden md:block lg:fixed h-screen top-10 left-0 z-0 shadow-md">
+      <aside className="w-72 p-4 pt-24 bg-base-300 fixed top-0 left-0 h-screen shadow-md z-0 overflow-y-auto">
         <form className="space-y-4" onSubmit={(e) => handleSubmit(e)}>
           <div>
             <label className="input input-info input-md flex items-center gap-2">

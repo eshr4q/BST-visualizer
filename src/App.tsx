@@ -5,14 +5,16 @@ import { useState } from 'react';
 import { TreeNode } from './utils/binaryTree';
 import { insert, getHeight } from './utils/binaryTree';
 import { printTree } from './utils/binaryTree';
+import TreeVisualization from './components/TreeVisualization';
 
 function App() {
 
   const [root, setRoot] = useState<TreeNode | null>(null);
 
   return (
-    <div className="min-h-screen flex">
-      {/* <Header /> */}
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="flex flex-1 pt-20">
       <InputForm onSubmit={(array, target) => {
         console.log("Received in App:", array, target);
         let newRoot: TreeNode | null = null;
@@ -23,12 +25,16 @@ function App() {
         console.log("Tree height:", getHeight(newRoot));
         console.log("Tree structure:");
         printTree(newRoot);
-      }} />
-      <main className="flex-grow p-4 ml-72">
+      }} 
+      />
+     
+      <main className="flex-1 p-4 bg-red-600 overflow-y-auto">
         {/* Binary Search Visualization goes here */}
-        {root && <div>Tree height: {getHeight(root)}</div>}
+        {/* {root && <div>Tree height: {getHeight(root)}</div>} */}
+        <TreeVisualization root={root} />
       </main>
-    </div>
+      </div>
+      </div>
   );
 }
 
