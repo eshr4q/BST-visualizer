@@ -47,7 +47,7 @@ const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root }) => {
   const renderTree = () => {
     const treeData = convertToTreeData(root);
     return (
-      <div className="w-full h-[300px] bg-blue-700">
+      <div className="w-full h-full bg-blue-700">
         <Tree
           data={treeData}
           orientation="vertical"
@@ -62,7 +62,7 @@ const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root }) => {
   };
 
   return (
-    <div className="w-full h-[500px] bg-yellow-500 flex items-center justify-center">
+    <div className="w-full h-[500px] p-6 bg-green-500 flex items-center justify-center">
       {root ? renderTree() : (
         <div className="text-cyan-500 text-center">
           <h2>Tree Visualization Component</h2>

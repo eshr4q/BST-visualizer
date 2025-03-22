@@ -12,9 +12,12 @@ function App() {
   const [root, setRoot] = useState<TreeNode | null>(null);
 
   return (
-    <div className="min-h-screen flex flex-col">
+   
+
+     
+      <main className="w-250 m-0 p-8 bg-red-600 overflow-y-auto">
       <Header />
-      <div className="flex flex-1 pt-20">
+      
       <InputForm onSubmit={(array, target) => {
         console.log("Received in App:", array, target);
         let newRoot: TreeNode | null = null;
@@ -27,14 +30,12 @@ function App() {
         printTree(newRoot);
       }} 
       />
-     
-      <main className="flex-1 p-4 bg-red-600 overflow-y-auto">
         {/* Binary Search Visualization goes here */}
         {/* {root && <div>Tree height: {getHeight(root)}</div>} */}
         <TreeVisualization root={root} />
       </main>
-      </div>
-      </div>
+  
+    
   );
 }
 
