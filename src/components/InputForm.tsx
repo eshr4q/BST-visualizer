@@ -71,7 +71,7 @@ interface InputFormProps {
             <div className="card-body">
    
               <p>{displayedNums}</p>
-   
+              
             </div>
         </div>
         ) : null}

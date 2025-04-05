@@ -63,7 +63,12 @@ function insert(node: TreeNode | null, value: number): TreeNode {
     if (node === null) {
         return new TreeNode(value);
     }
-    if (value <= node.value) {
+
+    if (value === node.value){
+        return node;
+    }
+
+    if (value < node.value) {
         node.left = insert(node.left, value);
     } else {
         node.right = insert(node.right, value);
@@ -91,15 +96,15 @@ function insert(node: TreeNode | null, value: number): TreeNode {
     return node;
 }
 
-function printTree(node: TreeNode | null, level: number = 0, prefix: string = ""): void {
-    if (node === null) {
-        console.log(`${"  ".repeat(level)}${prefix}null`);
-        return;
-    }
+// function printTree(node: TreeNode | null, level: number = 0, prefix: string = ""): void {
+//     if (node === null) {
+//         console.log(`${"  ".repeat(level)}${prefix}null`);
+//         return;
+//     }
 
-    console.log(`${"  ".repeat(level)}${prefix}${node.value} (height: ${node.height})`);
-    printTree(node.left, level + 1, "L---- ");
-    printTree(node.right, level + 1, "R---- ");
-}
+//     console.log(`${"  ".repeat(level)}${prefix}${node.value} (height: ${node.height})`);
+//     printTree(node.left, level + 1, "L---- ");
+//     printTree(node.right, level + 1, "R---- ");
+// }
 
-export { TreeNode, getHeight, insert, printTree };
+export { TreeNode, getHeight, insert };

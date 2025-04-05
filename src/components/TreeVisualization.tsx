@@ -12,9 +12,10 @@ interface AVLTreeNode {
 
 interface TreeVisualizationProps {
   root: AVLTreeNode | null;
+  target: number | null;
 }
 
-const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root }) => {
+const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root, target }) => {
  
   const convertToTreeData = (node: AVLTreeNode | null): RawNodeDatum | undefined => {
     if (!node) return undefined; 
@@ -29,19 +30,28 @@ const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root }) => {
   };
 
   
-  const renderCustomNodeElement = ({ nodeDatum }: { nodeDatum: TreeNodeDatum }) => (
-    <g>
-      <circle r={15} fill="lightblue" />
-      <text fill="black" strokeWidth="0" x="0" y="5" textAnchor="middle">
-        {nodeDatum.name}
-      </text>
-      {nodeDatum.attributes?.height && (
+  const renderCustomNodeElement = ({ nodeDatum }: { nodeDatum: TreeNodeDatum }) => {
+
+    const isTarget = target !== null && parseInt(nodeDatum.name) === target; 
+
+    return(
+      <g>
+        <circle
+          r={20}
+          fill={isTarget ? '#FF9999' : 'lightgray'} 
+          style={isTarget ? { transition: 'fill 1s ease-in-out' } : {}}
+        />
+        <text fill="black" strokeWidth="0" x="0" y="5" textAnchor="middle">
+          {nodeDatum.name}
+        </text>
+      {/* {nodeDatum.attributes?.height && (
         <text fill="black" strokeWidth="0" x="0" y="25" textAnchor="middle">
           h: {nodeDatum.attributes.height}
         </text>
-      )}
-    </g>
+      )} */}
+      </g>
   );
+};
 
   
   const renderTree = () => {
@@ -51,11 +61,15 @@ const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root }) => {
         <Tree
           data={treeData}
           orientation="vertical"
-          translate={{ x: 300, y: 50 }}
+          translate={{x: 300, y: 50}} 
           separation={{ siblings: 1, nonSiblings: 1 }}
-          nodeSize={{ x: 150, y: 100 }}
+          nodeSize={{ x: 120, y: 80 }}
           zoomable={true}
           renderCustomNodeElement={renderCustomNodeElement} 
+          enableLegacyTransitions={true}
+          transitionDuration={1000}
+          scaleExtent={{min:0.3, max:2}}
+          
         />
       </div>
     );
@@ -64,7 +78,7 @@ const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root }) => {
   return (
     <div className="w-full h-[500px] p-1 flex items-center justify-center">
       {root ? renderTree() : (
-        <div className="text-cyan-500 text-center">
+        <div className="text-s-1 text-center">
           <h2>Tree Visualization Component</h2>
           <p>This will display the AVL Tree soon!</p>
         </div>
