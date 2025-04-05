@@ -43,3 +43,11 @@
 .read-the-docs {
   color: #888;
 }
+
+
+@theme {
+  --color-bc-1: #A2D2DF; 
+  --color-s-1: #2B2A4C; 
+  --color-h-1: #B31312;
+  --radius-field-h-1: #B31312
+}

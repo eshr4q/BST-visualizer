@@ -32,21 +32,22 @@ interface InputFormProps {
     };
 
     return (
-      <aside className="w-72 p-4 pt-24 bg-base-300 fixed top-0 left-0 h-screen shadow-md z-0 overflow-y-auto">
+      <aside className="w-72 p-8 bg-s-1 fixed top-16 left-0 h-screen shadow-md z-0 overflow-y-auto hidden lg:block">
         <form className="space-y-4" onSubmit={(e) => handleSubmit(e)}>
           <div>
-            <label className="input input-info input-md flex items-center gap-2">
+            <label className="input  bg-s-1 input-md flex items-center gap-2">
               List of Numbers
               <input 
               type="text" 
               placeholder="e.g., 1,2,3" 
               className="grow" 
               value={numsList}
-              onChange={(e)=> setNumsList(e.target.value)} />
+              onChange={(e)=> setNumsList(e.target.value)} 
+              />
             </label>
           </div>
           <div>
-            <label className="input input-info input-md flex items-center gap-2">
+            <label className="input input-md bg-s-1 flex items-center gap-2">
               Target Number
               <input 
               type="text" 
@@ -54,18 +55,18 @@ interface InputFormProps {
               placeholder="5" 
               value={targetNum}
               onChange={(e)=> setTargetNum(e.target.value)}/>
-              <span className="badge badge-neutral badge-xs">Optional</span>
+              <span className="badge bg-h-1 badge-xs">Optional</span>
             </label>
           </div>
           <button 
           type="submit" 
-          className=" btn btn-wide btn-outline btn-info"
+          className=" btn btn-wide btn-outline hover:bg-h-1 border-hidden"
           >
             Start Search
           </button>
         </form>
         {displayedNums ? (
-        <div className="card bg-base-100 shadow-md mt-4">
+        <div className="card bg-h-1 shadow-md mt-4">
           <h3 className="card-title text-sm">Entered Values</h3>
             <div className="card-body">
    
