@@ -79,8 +79,8 @@ const TreeVisualization: React.FC<TreeVisualizationProps> = ({ root, target }) =
     <div className="w-full h-[500px] p-1 flex items-center justify-center">
       {root ? renderTree() : (
         <div className="text-s-1 text-center">
-          <h2>Tree Visualization Component</h2>
-          <p>This will display the AVL Tree soon!</p>
+          <h2>Gimme your list of numbers!</h2>
+          <p></p>
         </div>
       )}
     </div>
